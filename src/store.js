@@ -1,3 +1,6 @@
+import { useActionState } from "react";
+import { fetchAgenda } from "./hooks/actions";
+
 export const initialStore=()=>{
   return{
     message: null,
@@ -12,7 +15,9 @@ export const initialStore=()=>{
         title: "Do my homework",
         background: null,
       }
-    ]
+    ], 
+    agenda: null,
+    contacts: null,
   }
 }
 
@@ -26,6 +31,21 @@ export default function storeReducer(store, action = {}) {
         ...store,
         todos: store.todos.map((todo) => (todo.id === id ? { ...todo, background: color } : todo))
       };
+
+    case 'set_agenda':
+      return {
+        ...store,
+        agenda: action.payload.agenda,
+        contacts: action.payload.contacts,
+      };
+
+    case 'get_contacts':
+      return {
+        ...store,
+        contacts: useActionState.payload.contacts,
+      };
+          
+        
     default:
       throw Error('Unknown action.');
   }    
