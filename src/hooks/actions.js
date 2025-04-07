@@ -36,7 +36,59 @@ export const getContacts = async (dispatchEvent, payload) => {
         type: "get_contacts",
         payload: {contacts: data.contacts},
     })
+}
 
-    
-    };
+export const createContacts = async (dispatchEvent, payload) => {
+    let responce = await fetch("https://playground.4geeks.com/contact/agendas/Lewise55/contacts", {
+        method: "POST",
+        headers: {"constent-type": "application/json"},
+        body: {
+            "name": "string",
+            "phone": "string",
+            "email": "string",
+            "address": "string"
+        }
+    });
+    let data = await responce.json();
 
+    // create contacts 
+    dispatch({
+        type: "create_contacts",
+        payload: {contacts: data.contacts},
+    })
+}
+
+export const updateContacts = async (dispatchEvent, payload) => {
+    let responce = await fetch("https://playground.4geeks.com/contact/agendas/Lewise55/contacts/", {
+        method: "PUT",
+        headers: {"constent-type": "application/json"},
+        body: {
+            "name": "string",
+            "phone": "string",
+            "email": "string",
+            "address": "string"
+        }
+    });
+    let data = await responce.json();
+
+    // update contacts 
+    dispatch({
+        type: "update_contacts",
+        payload: {contacts: data.contacts},
+    })
+}
+
+export const deleteContacts = async (dispatchEvent, payload) => {
+    let responce = await fetch("https://playground.4geeks.com/contact/agendas/Lewise55/contacts/", {
+        method: "DELETE",
+        headers: {"constent-type": "application/json"},
+        body: {}
+    });
+    let data = await responce.json();
+
+    // get contacts 
+    dispatch({
+        type: "delete_contacts",
+        payload: {contacts: data.contacts},
+    })
+};

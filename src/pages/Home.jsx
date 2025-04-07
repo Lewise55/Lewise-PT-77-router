@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
+import { Link } from "react-router-dom";
 import { ContactCard } from "../components/ContactCard.jsx";
 
 export const Home = () => {
@@ -20,10 +21,9 @@ export const Home = () => {
 
 	return (
 		<div className="text-center mt-5">
-			<h1>Hello Rigo!!</h1>
-			<p>
-				
-			</p>
+			<div >
+				<ContactCard />
+			</div>	
 		</div>
 	);
 }; 
