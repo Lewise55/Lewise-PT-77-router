@@ -16,14 +16,21 @@ export const Home = () => {
 	setContacts(store.contacts);
   }, [store.contacts])
 
-  console.log(store.agenda);
+  console.log(contacts);
   
 
 	return (
 		<div className="text-center mt-5">
-			<div >
-				<ContactCard />
-			</div>	
+			{
+				contacts?.length > 0 
+				? contacts.map((contacts, index) => {
+					return (
+						<ContactCard key={index} name={contacts.name} phone={contacts.phone} email={contacts.email} address={contacts.address}/>
+					);
+				})
+				
+				: <h1> You need contacts, babe</h1>
+			}
 		</div>
 	);
 }; 

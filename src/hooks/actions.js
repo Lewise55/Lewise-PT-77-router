@@ -1,6 +1,4 @@
-import { json } from "react-router-dom";
-
-export const fetchAgenda = async (dispatchEvent, payload) => {
+export const fetchAgenda = async (dispatch, payload) => {
     let responce = await fetch("https://playground.4geeks.com/contact/agendas/Lewise55");
     let data = await responce.json();
 
@@ -16,18 +14,18 @@ export const fetchAgenda = async (dispatchEvent, payload) => {
     });
 
 }
-export const createAgenda = async (dispatchEvent, payload) => {
+export const createAgenda = async (dispatch, payload) => {
     let responce = await fetch("https://playground.4geeks.com/contact/agendas/Lewise55", {
         method: "POST",
-        headers: {"constent-type": "application/json"}
+        headers: { "Content-type": "application/json" }
     });
 
     let data = await responce.json()
-    fetchAgenda()
+    fetchAgenda(dispatch);
 
 }
 
-export const getContacts = async (dispatchEvent, payload) => {
+export const getContacts = async (dispatch, payload) => {
     let responce = await fetch("https://playground.4geeks.com/contact/agendas/Lewise55/contacts");
     let data = await responce.json();
 
@@ -35,60 +33,65 @@ export const getContacts = async (dispatchEvent, payload) => {
     dispatch({
         type: "get_contacts",
         payload: {contacts: data.contacts},
-    })
+    });
 }
 
-export const createContacts = async (dispatchEvent, payload) => {
+export const createContact = async (dispatch, payload) => {
     let responce = await fetch("https://playground.4geeks.com/contact/agendas/Lewise55/contacts", {
         method: "POST",
-        headers: {"constent-type": "application/json"},
-        body: {
-            "name": "string",
-            "phone": "string",
-            "email": "string",
-            "address": "string"
-        }
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify({
+            "name": payload.name,
+            "phone": payload.phone,
+            "email": payload.email,
+            "address": payload.address
+        })
     });
     let data = await responce.json();
 
-    // create contacts 
-    dispatch({
-        type: "create_contacts",
-        payload: {contacts: data.contacts},
-    })
+    // // create contacts 
+    // dispatch({
+    //     type: "create_contact",
+    //     payload: {contacts: data.contacts},
+    // });
+    getContacts(dispatch)
 }
 
-export const updateContacts = async (dispatchEvent, payload) => {
-    let responce = await fetch("https://playground.4geeks.com/contact/agendas/Lewise55/contacts/", {
+export const updateContact = async (dispatch, payload) => {
+    let responce = await fetch("https://playground.4geeks.com/contact/agendas/Lewise55/contacts/"+payload, {
         method: "PUT",
-        headers: {"constent-type": "application/json"},
-        body: {
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify({
             "name": "string",
             "phone": "string",
             "email": "string",
             "address": "string"
-        }
+        })
     });
     let data = await responce.json();
 
     // update contacts 
-    dispatch({
-        type: "update_contacts",
-        payload: {contacts: data.contacts},
-    })
+    // dispatch({
+    //     type: "update_contact",
+    //     payload: {contacts: data.contacts},
+    // });
+
+    // updateContact(dispatch);
 }
 
-export const deleteContacts = async (dispatchEvent, payload) => {
-    let responce = await fetch("https://playground.4geeks.com/contact/agendas/Lewise55/contacts/", {
+export const deleteContact = async (dispatch, payload) => {
+    let responce = await fetch("https://playground.4geeks.com/contact/agendas/Lewise55/contacts/id", {
         method: "DELETE",
-        headers: {"constent-type": "application/json"},
+        headers: { "Content-type": "application/json" },
         body: {}
     });
     let data = await responce.json();
 
     // get contacts 
-    dispatch({
-        type: "delete_contacts",
-        payload: {contacts: data.contacts},
-    })
+    // dispatch({
+    //     type: "delete_contact",
+    //     payload: {contacts: data.contacts},
+    // });
+
+    // deleteContact(dispatch);
 };

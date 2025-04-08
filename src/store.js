@@ -1,4 +1,3 @@
-import { useActionState } from "react";
 import { fetchAgenda } from "./hooks/actions";
 
 export const initialStore=()=>{
@@ -42,8 +41,26 @@ export default function storeReducer(store, action = {}) {
     case 'get_contacts':
       return {
         ...store,
-        contacts: useActionState.payload.contacts,
+        contacts: action.payload.contacts,
       };
+
+    // case 'create_contact':
+    //   return {
+    //     ...store,
+    //     contacts: useActionState.payload.contacts,
+    // };
+
+    // case 'update_contact':
+    //   return {
+    //     ...store,
+    //     contacts: useActionState.payload.contacts,
+    // };
+
+    // case 'delete_contact':
+    //   return {
+    //     ...store,
+    //     contacts: useActionState.payload.contacts,
+    // };
           
         
     default:

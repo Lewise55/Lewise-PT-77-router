@@ -15,7 +15,7 @@ export const ContactCard = (props) => {
                         </div>
                         <div class="col-8 text-start">
                             <h5 className="card-title">props.name</h5>
-                            <p className="card-text">props.number</p>
+                            <p className="card-text">props.phone</p>
                             <p className="card-text">props.email</p>
                             <p className="card-text">props.address</p>
                         </div>
