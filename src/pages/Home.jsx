@@ -25,14 +25,13 @@ export const Home = () => {
 				contacts?.length > 0 
 				? contacts.map((contact, index) => {
 					return (
-						<ContactCard key={index} name={contact.name} phone={contact.phone} email={contact.email} address={contact.address}/>
+						<ContactCard key={index} contact={contact} />
 					);
 				})				
 				: <h1> You need contacts, babe</h1>
 			}
 			<div className="ml-auto mt-5">
-				<Link className="btn btn-primary mx-2" to={"/Create"}>Create Contact</Link>
-				<Link className="btn btn-primary mx-2" to={"/update"}>Update Contact</Link>					
+				<Link className="btn btn-primary mx-2" to={"/Create"}>Create Contact</Link>			
 			</div>
 		</div>
 		

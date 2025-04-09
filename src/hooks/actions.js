@@ -41,19 +41,15 @@ export const getContacts = async (dispatch, payload) => {
 }
 // Adds new contact to agenda
 export const createContact = async (dispatch, payload) => {
-    let inputName = payload.name;
-    let inputPhone = payload.phone;
-    let inputEmail = payload.email;
-    let inputAddress = payload.address;
     
     let response = await fetch("https://playground.4geeks.com/contact/agendas/Lewise55/contacts", {
         method: "POST",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify({
-            "name": inputName,
-            "phone": inputPhone,
-            "email": inputEmail,
-            "address": inputAddress
+            "name": payload.name,
+            "phone": payload.phone,
+            "email": payload.email,
+            "address": payload.address
         })
     });
     // let data = await response.json();
@@ -62,33 +58,28 @@ export const createContact = async (dispatch, payload) => {
 }
 // updates contacts
 export const updateContact = async (dispatch, payload) => {
-    let updatedName = payload.name;
-    let updatedPhone = payload.phone;
-    let updatedEmail = payload.email;
-    let updatedAddress = payload.address;
-    let id = payload.id;
 
-    let response = await fetch(`https://playground.4geeks.com/contact/agendas/Lewise55/contacts/${id}`, {
+    let response = await fetch(`https://playground.4geeks.com/contact/agendas/Lewise55/contacts/${payload.id}`, {
         method: "PUT",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify({
-            "name": updatedName,
-            "phone": updatedPhone,
-            "email": updatedEmail,
-            "address": updatedAddress
+            "name": payload.name,
+            "phone": payload.phone,
+            "email": payload.email,
+            "address": payload.address,
         })
     });
-    let data = await response.json();
+    // let data = await response.json();
     getContacts(dispatch);
     
 }
 
 export const deleteContact = async (dispatch, payload) => {
-    let response = await fetch(`https://playground.4geeks.com/contact/agendas/Lewise55/contacts/${payload}`, {
+    let response = await fetch(`https://playground.4geeks.com/contact/agendas/Lewise55/contacts/${payload.id}`, {
         method: "DELETE",
         headers: { "Content-type": "application/json" },
     });
-    let data = await response.json();
+    // let data = await response.json();
     getContacts(dispatch);
 
 };
