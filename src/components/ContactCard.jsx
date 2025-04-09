@@ -1,13 +1,12 @@
-import React, {useState, useEffect} from "react";
+import React, {useEffect} from "react";
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faPencil, faCircleUser } from '@fortawesome/free-solid-svg-icons';
-import { useNavigate, useParams } from "react-router-dom";
 
 export const ContactCard = ({contact}) => {
 
-  const {store, dispatch, deleteContact} =useGlobalReducer()
+  const {store, dispatch, deleteContact} =useGlobalReducer();
   
 
     return (
@@ -27,7 +26,7 @@ export const ContactCard = ({contact}) => {
                         <div className="col-3 text-center">
                             <div className="d-flex mx-5">
                                 <button className="btn btn-danger mx-5">
-                                    <FontAwesomeIcon icon={faTrash} />
+                                    <span onClick={() => deleteContact(contact)}><FontAwesomeIcon icon={faTrash} /></span>
                                 </button>
                                 <Link 
                                     className="btn btn-success" 
