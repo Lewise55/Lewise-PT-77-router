@@ -43,24 +43,6 @@ export default function storeReducer(store, action = {}) {
         ...store,
         contacts: action.payload.contacts,
       };
-
-    // case 'create_contact':
-    //   return {
-    //     ...store,
-    //     contacts: useActionState.payload.contacts,
-    // };
-
-    // case 'update_contact':
-    //   return {
-    //     ...store,
-    //     contacts: useActionState.payload.contacts,
-    // };
-
-    // case 'delete_contact':
-    //   return {
-    //     ...store,
-    //     contacts: useActionState.payload.contacts,
-    // };
           
         
     default:
