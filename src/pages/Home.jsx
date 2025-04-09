@@ -31,7 +31,7 @@ export const Home = () => {
 				: <h1> You need contacts, babe</h1>
 			}
 			<div className="ml-auto mt-5">
-				<Link className="btn btn-primary mx-2" to={"/Create"}>Create Contact</Link>			
+				<Link className="btn btn-success mx-2" to={"/Create"}>Create Contact</Link>			
 			</div>
 		</div>
 		
