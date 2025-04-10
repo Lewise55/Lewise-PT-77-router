@@ -26,6 +26,7 @@ export const UpdateContact = () => {
     const handleUpdateContact = (e) => {
         e.preventDefault();
         updateContact(currentContact)
+        getContacts(dispatch)    
         navigate("/")
     }
 
@@ -80,6 +81,7 @@ export const UpdateContact = () => {
                 </div>
                 <button 
                     onClick={(e) => handleUpdateContact(e)}
+                    type="submit"
                     className="btn btn-success">
                         Update Contact
                 </button>

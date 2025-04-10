@@ -4,15 +4,15 @@ import { useNavigate } from "react-router-dom";
 
 export const CreateContact = () => {
     const [newContact, setNewContact] = useState({name:"", phone:"", email:"", address:""});
-    const {store, dispatch, createContact} =useGlobalReducer()
+    const {store, dispatch, createContact, getContacts} =useGlobalReducer()
     const navigate = useNavigate();
 
     const handleCreateNewContact = (e) => {
         e.preventDefault();
         createContact(newContact)
+        getContacts(dispatch)    
         navigate("/")
     }
-
     return (
         <div className="input">
             <div className="text-center mt-5">
@@ -58,6 +58,7 @@ export const CreateContact = () => {
                 </div>
                 <button 
                     onClick={(e) => handleCreateNewContact(e)}
+                    type="submit"
                     className="btn btn-success">
                         Post
                 </button>

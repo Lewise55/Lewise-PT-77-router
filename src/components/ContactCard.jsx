@@ -6,7 +6,7 @@ import { faTrash, faPencil, faCircleUser } from '@fortawesome/free-solid-svg-ico
 
 export const ContactCard = ({contact}) => {
 
-  const {store, dispatch, deleteContact} =useGlobalReducer();
+  const {store, dispatch, deleteContact, getContacts} =useGlobalReducer();
   
 
     return (
@@ -26,9 +26,13 @@ export const ContactCard = ({contact}) => {
                         <div className="col-3 text-center">
                             <div className="d-flex mx-5">
                                 <button className="btn btn-danger mx-5">
-                                    <span onClick={() => deleteContact(contact)}><FontAwesomeIcon icon={faTrash} /></span>
+                                    <span onClick={() => {
+                                        deleteContact(contact)
+                                        getContacts(dispatch)
+                                        }}><FontAwesomeIcon icon={faTrash} /></span>
                                 </button>
                                 <Link 
+                                    type="submit"
                                     className="btn btn-success" 
                                     to={`/update/${contact.id}`}> <FontAwesomeIcon icon={faPencil} /> 
                                 </Link>

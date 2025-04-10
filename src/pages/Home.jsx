@@ -12,7 +12,7 @@ export const Home = () => {
 	fetchAgenda();
   }, [])
 
-  useState (() => {
+  useEffect (() => {
 	setContacts(store.contacts);
   }, [store.contacts])
 
@@ -23,6 +23,7 @@ export const Home = () => {
 		<div className="text-center mt-5">
 			{
 				contacts?.length > 0 
+				
 				? contacts.map((contact, index) => {
 					return (
 						<ContactCard key={index} contact={contact} />
